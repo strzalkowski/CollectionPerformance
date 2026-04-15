@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>ConsoleApp1.PermissionBenchmark-20260415-203958</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.15.8, macOS Tahoe 26.4.1 (25E253) [Darwin 25.4.0]
+Apple M5 Pro, 1 CPU, 15 logical and 15 physical cores
+.NET SDK 10.0.201
+  [Host]     : .NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a
+  DefaultJob : .NET 10.0.5 (10.0.5, 10.0.526.15411), Arm64 RyuJIT armv8.0-a
+</code></pre>
+<pre><code></code></pre>
+
+<table>
+<thead><tr><th>Method      </th><th>SetSize</th><th>MatchCase</th><th>Mean    </th><th>Error</th><th>StdDev</th><th>Gen0</th><th>Gen1</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>IntersectAny</td><td>Large</td><td>End</td><td>3,523.4529 ns</td><td>9.8303 ns</td><td>9.1952 ns</td><td>0.2327</td><td>-</td><td>1968 B</td>
+</tr><tr><td>ListAnyContains</td><td>Large</td><td>End</td><td>6,950.9632 ns</td><td>6.5796 ns</td><td>5.4943 ns</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>HashSetAnyContains</td><td>Large</td><td>End</td><td>117.6305 ns</td><td>0.2344 ns</td><td>0.2078 ns</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>ForeachEarlyExit</td><td>Large</td><td>End</td><td>31,382.2350 ns</td><td>64.7133 ns</td><td>54.0385 ns</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>IntersectAny</td><td>Large</td><td>None</td><td>3,437.4509 ns</td><td>3.0764 ns</td><td>2.7272 ns</td><td>0.2327</td><td>-</td><td>1968 B</td>
+</tr><tr><td>ListAnyContains</td><td>Large</td><td>None</td><td>7,867.7969 ns</td><td>140.4400 ns</td><td>131.3676 ns</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>HashSetAnyContains</td><td>Large</td><td>None</td><td>112.0303 ns</td><td>1.4558 ns</td><td>1.2905 ns</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>ForeachEarlyExit</td><td>Large</td><td>None</td><td>31,377.3384 ns</td><td>74.7288 ns</td><td>58.3434 ns</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>IntersectAny</td><td>Large</td><td>Start</td><td>290.6825 ns</td><td>1.6974 ns</td><td>1.4174 ns</td><td>0.2351</td><td>0.0014</td><td>1968 B</td>
+</tr><tr><td>ListAnyContains</td><td>Large</td><td>Start</td><td>1.1232 ns</td><td>0.0019 ns</td><td>0.0018 ns</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>HashSetAnyContains</td><td>Large</td><td>Start</td><td>1.1387 ns</td><td>0.0021 ns</td><td>0.0020 ns</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>ForeachEarlyExit</td><td>Large</td><td>Start</td><td>0.3293 ns</td><td>0.0257 ns</td><td>0.0240 ns</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>IntersectAny</td><td>Medium</td><td>End</td><td>407.3878 ns</td><td>4.1000 ns</td><td>3.6345 ns</td><td>0.0744</td><td>-</td><td>624 B</td>
+</tr><tr><td>ListAnyContains</td><td>Medium</td><td>End</td><td>141.8666 ns</td><td>0.2824 ns</td><td>0.2504 ns</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>HashSetAnyContains</td><td>Medium</td><td>End</td><td>21.6727 ns</td><td>0.1405 ns</td><td>0.1245 ns</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>ForeachEarlyExit</td><td>Medium</td><td>End</td><td>717.1482 ns</td><td>2.4599 ns</td><td>1.9206 ns</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>IntersectAny</td><td>Medium</td><td>None</td><td>401.7419 ns</td><td>6.4549 ns</td><td>6.0379 ns</td><td>0.0744</td><td>-</td><td>624 B</td>
+</tr><tr><td>ListAnyContains</td><td>Medium</td><td>None</td><td>141.1782 ns</td><td>0.9700 ns</td><td>0.9074 ns</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>HashSetAnyContains</td><td>Medium</td><td>None</td><td>22.6132 ns</td><td>0.0503 ns</td><td>0.0420 ns</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>ForeachEarlyExit</td><td>Medium</td><td>None</td><td>784.0134 ns</td><td>14.6461 ns</td><td>15.0405 ns</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>IntersectAny</td><td>Medium</td><td>Start</td><td>79.0611 ns</td><td>0.0708 ns</td><td>0.0627 ns</td><td>0.0745</td><td>0.0001</td><td>624 B</td>
+</tr><tr><td>ListAnyContains</td><td>Medium</td><td>Start</td><td>1.1287 ns</td><td>0.0007 ns</td><td>0.0007 ns</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>HashSetAnyContains</td><td>Medium</td><td>Start</td><td>1.1505 ns</td><td>0.0013 ns</td><td>0.0011 ns</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>ForeachEarlyExit</td><td>Medium</td><td>Start</td><td>0.3160 ns</td><td>0.0046 ns</td><td>0.0041 ns</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>IntersectAny</td><td>Small</td><td>End</td><td>47.1819 ns</td><td>0.3894 ns</td><td>0.3252 ns</td><td>0.0363</td><td>-</td><td>304 B</td>
+</tr><tr><td>ListAnyContains</td><td>Small</td><td>End</td><td>3.9833 ns</td><td>0.1028 ns</td><td>0.1184 ns</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>HashSetAnyContains</td><td>Small</td><td>End</td><td>3.2257 ns</td><td>0.0064 ns</td><td>0.0053 ns</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>ForeachEarlyExit</td><td>Small</td><td>End</td><td>5.7588 ns</td><td>0.1299 ns</td><td>0.1152 ns</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>IntersectAny</td><td>Small</td><td>None</td><td>46.6630 ns</td><td>0.0781 ns</td><td>0.0730 ns</td><td>0.0363</td><td>-</td><td>304 B</td>
+</tr><tr><td>ListAnyContains</td><td>Small</td><td>None</td><td>3.7866 ns</td><td>0.0057 ns</td><td>0.0048 ns</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>HashSetAnyContains</td><td>Small</td><td>None</td><td>2.9023 ns</td><td>0.0191 ns</td><td>0.0179 ns</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>ForeachEarlyExit</td><td>Small</td><td>None</td><td>5.7933 ns</td><td>0.0098 ns</td><td>0.0082 ns</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>IntersectAny</td><td>Small</td><td>Start</td><td>35.7541 ns</td><td>0.0611 ns</td><td>0.0571 ns</td><td>0.0363</td><td>-</td><td>304 B</td>
+</tr><tr><td>ListAnyContains</td><td>Small</td><td>Start</td><td>1.1317 ns</td><td>0.0215 ns</td><td>0.0201 ns</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>HashSetAnyContains</td><td>Small</td><td>Start</td><td>1.1521 ns</td><td>0.0099 ns</td><td>0.0078 ns</td><td>-</td><td>-</td><td>-</td>
+</tr><tr><td>ForeachEarlyExit</td><td>Small</td><td>Start</td><td>0.2997 ns</td><td>0.0180 ns</td><td>0.0169 ns</td><td>-</td><td>-</td><td>-</td>
+</tr></tbody></table>
+</body>
+</html>

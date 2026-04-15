@@ -46,4 +46,3 @@ Apple M5 Pro, 1 CPU, 15 logical and 15 physical cores
 | ListAnyContains    | Small   | Start     |      1.1317 ns |   0.0215 ns |   0.0201 ns |      - |      - |         - |
 | HashSetAnyContains | Small   | Start     |      1.1521 ns |   0.0099 ns |   0.0078 ns |      - |      - |         - |
 | ForeachEarlyExit   | Small   | Start     |      0.2997 ns |   0.0180 ns |   0.0169 ns |      - |      - |         - |
-
